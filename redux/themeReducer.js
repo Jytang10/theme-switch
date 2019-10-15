@@ -1,6 +1,8 @@
+import {lightTheme} from '../styles/theme'
+
 
 const initialState = {
-  theme: {}
+  theme: {lightTheme}
 }
 
 export default function(state = initialState, action){
