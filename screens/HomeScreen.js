@@ -14,6 +14,7 @@ class HomeScreen extends Component {
         <Container>
           <TextContainer>
             <Title>Change App Theme</Title>
+            <Title>Simple Basic App Theme</Title>
           </TextContainer>
           {
             this.props.theme.mode === "light" ?
@@ -69,5 +70,5 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   font-size:20px;
-  background-color: ${props => props.theme.SECONDARY_TEXT_COLOR};
+  color: ${props => props.theme.SECONDARY_TEXT_COLOR};
 `
