@@ -10,7 +10,7 @@ import themeReducer from './redux/themeReducer';
 import HomeScreen from './screens/HomeScreen';
 
 const store = createStore(combineReducers({themeReducer}), applyMiddleware(thunk))
-
+//the themeReducer is used in HomeScreen.js
 class App extends Component {
   render() {
     return (

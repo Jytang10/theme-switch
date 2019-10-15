@@ -1,27 +1,43 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import styled, {ThemeProvider} from 'styled-components/native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import {switchTheme} from '../redux/actions';
+import {connect} from 'react-redux';
 
-// create a component
 class HomeScreen extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>I am the Home screen.</Text>
-      </View>
+    console.log("HomeScreen.js------------",this.props.theme)
+    return ( //the theme in this.props.theme is coming from the theme inside the mapStateToProps method
+      <ThemeProvider theme={this.props.theme}>   
+        <Container>
+          <TextContainer>
+
+          </TextContainer>
+        </Container>
+      </ThemeProvider>
     );
   }
 }
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-});
+function mapStateToProps(state){
+  return {
+    theme: state.themeReducer.theme    //themeReducer comes from App.js.   the last theme comes from the theme inside newState inside themedReducer.js
+  }
+}
 
-//make this component available to the app
-export default HomeScreen;
+export default connect(mapStateToProps, {switchTheme})(HomeScreen);
+
+//the theme in props.theme.PRI.. is coming from the theme in mapStateToProps method
+const Container = styles.SafeAreaView`
+  flex:1;
+  background-color: ${props => props.theme.PRIMARY_BACKGROUND_COLOR};
+  justify-content:center;
+  align-items:center
+`
+
+const TextContainer = styles.SafeAreaView`
+  padding:15px;
+  border-radius:5px;
+  border:1px solid ${props => props.theme.PRIMARY_TEXT_COLOR}
+`
