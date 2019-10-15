@@ -7,13 +7,15 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import themeReducer from './redux/themeReducer';
 
+import HomeScreen from './screens/HomeScreen';
+
 const store = createStore(combineReducers({themeReducer}), applyMiddleware(thunk))
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Text>I am App</Text>
+        <HomeScreen></HomeScreen>
       </Provider>
     );
   }
